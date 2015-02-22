@@ -1,4 +1,4 @@
-FROM gliderlabs/alpine:3.1
+FROM gliderlabs/alpine:latest
 RUN apk-install ca-certificates polarssl
 ADD https://github.com/coreos/etcd/releases/download/v2.0.3/etcd-v2.0.3-linux-amd64.tar.gz etcd-v2.0.3-linux-amd64.tar.gz
 RUN tar xzvf etcd-v2.0.3-linux-amd64.tar.gz
