@@ -5,4 +5,5 @@ RUN tar xzvf etcd-v2.0.3-linux-amd64.tar.gz
 RUN mv etcd-v2.0.3-linux-amd64/etcd /bin && mv etcd-v2.0.3-linux-amd64/etcdctl /bin && rm -Rf etcd-v2.0.3-linux-amd64*
 VOLUME /data
 EXPOSE 2379 2380 4001 7001
-ENTRYPOINT ["/bin/etcd", "-data-dir=/data", "-listen-peer-urls=http://0.0.0.0:7001,http://0.0.0.0:2380", "--listen-client-urls=http://0.0.0.0:4001,http://0.0.0.0:2379"]
+ADD run.sh /bin/run.sh
+ENTRYPOINT ["/bin/run.sh"]
