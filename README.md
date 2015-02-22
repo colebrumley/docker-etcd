@@ -4,6 +4,8 @@ This image weighs in at 46.17 MB due to the inclusion of TLS support and etcdctl
 
 Recently added a run script so that http is not hard-coded into the Dockerfile (for running over SSL).  Just overwrite `$CLIENT_URLS` and `$PEER_URLS` at runtime.
 
+Since the image uses an `ENTRYPOINT` it accepts passthrough arguments to etcd.
+
 ```sh
 docker run \
   -d \
