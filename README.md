@@ -2,7 +2,7 @@
 
 This image weighs in at 46.17 MB due to the inclusion of TLS support and etcdctl.  The `-data-dir` is a volume mounted to `/data`, and the default ports are bound to Etcd and exposed.
 
-Recently added a run script so that http is not hard-coded into the Dockerfile (for running over SSL).  Just overwrite `$CLIENT_URLS` and `$PEER_URLS` at runtime.
+Recently added a run script so that http is not hard-coded into the Dockerfile (for running over SSL).  Just overwrite `$CLIENT_URLS` and `$PEER_URLS` at runtime (these are the **listening** URLs).  You'll still need to set the `-advertise-client-urls` and `-initial-advertise-peer-urls` flags if the container will be part of a cluster.
 
 Since the image uses an `ENTRYPOINT` it accepts passthrough arguments to etcd.
 
@@ -17,5 +17,7 @@ docker run \
   --name some-etcd \
   elcolio/etcd:latest \
   -name some-etcd \
-  -discovery=https://discovery.etcd.io/blahblahblahblah
+  -discovery=https://discovery.etcd.io/blahblahblahblah \
+  -advertise-client-urls http://192.168.1.99:4001 \
+  -initial-advertise-peer-urls http://192.168.1.99:7001
 ```
