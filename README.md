@@ -1,4 +1,4 @@
-##Itty bitty Etcd v2.0.3 container
+##Itty bitty Etcd v2.0.5 container
 
 This image weighs in at 46.17 MB due to the inclusion of TLS support and etcdctl.  The `-data-dir` is a volume mounted to `/data`, and the default ports are bound to Etcd and exposed.
 
